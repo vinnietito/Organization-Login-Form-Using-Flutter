@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart'; // Import the HomeScreen file
 
 void main() {
   runApp(const MyApp());
@@ -32,11 +33,11 @@ class LoginScreen extends StatelessWidget {
             children: [
               // Logo
               Image.asset(
-                'assets/logo.png', // Place your logo in the assets folder
+                'assets/logo.png',
                 height: 100,
               ),
               const SizedBox(height: 20),
-              
+
               // Email Field
               TextField(
                 controller: emailController,
@@ -49,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              
+
               // Password Field
               TextField(
                 controller: passwordController,
@@ -63,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              
+
               // Login Button
               ElevatedButton(
                 onPressed: () {
@@ -72,11 +73,17 @@ class LoginScreen extends StatelessWidget {
 
                   if (email.isNotEmpty && password.isNotEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Login Successful!')),
+                      const SnackBar(content: Text('Login Successful!')),
+                    );
+
+                    // Navigate to HomeScreen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Please fill in all fields')),
+                      const SnackBar(content: Text('Please fill in all fields')),
                     );
                   }
                 },
